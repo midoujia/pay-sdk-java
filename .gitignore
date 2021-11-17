@@ -1,0 +1,7 @@
+# Log file
+*.log
+.idea
+target
+*.iml
+doc
+*Local*
