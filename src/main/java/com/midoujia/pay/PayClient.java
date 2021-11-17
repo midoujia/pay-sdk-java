@@ -12,6 +12,10 @@ public interface PayClient extends ServiceSupport {
 
     /**
      * 发起支付
+     * @param request 请求对象
+     * @param <T> 具体的请求对象
+     * @return PayResponse
+     * @throws PayException 自定义异常
      */
     <T extends PayResponse> T pay(PayRequest<T> request) throws PayException;
 }

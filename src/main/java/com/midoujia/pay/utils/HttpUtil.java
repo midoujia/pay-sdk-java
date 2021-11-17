@@ -28,12 +28,12 @@ public class HttpUtil {
 
     /**
      * http post调用http接口
-     * @param url
-     * @param jsonStr
-     * @param t
-     * @param <T>
-     * @return
-     * @throws PayException
+     * @param url URL
+     * @param jsonStr json参数
+     * @param t 类型
+     * @param <T> 类原型
+     * @return 类原型
+     * @throws PayException PayException
      */
     public static<T> T httpPost(String url, String jsonStr, Class<T> t) throws PayException {
         //创建httpClient实例
@@ -97,14 +97,12 @@ public class HttpUtil {
 
     /**
      * http get调用http接口
-     * @param url
-     * @param jsonStr
-     * @param t
-     * @param <T>
-     * @return
-     * @throws IOException
-     * @throws IllegalAccessException
-     * @throws InstantiationException
+     * @param url URL
+     * @param jsonStr 参数
+     * @param t 类
+     * @param <T> 类
+     * @return 类
+     * @throws PayException PayException
      */
     public static<T> T httpGet(String url, String jsonStr,Class<T> t) throws PayException {
         String result = "";
