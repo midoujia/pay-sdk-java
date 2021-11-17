@@ -12,8 +12,8 @@ import org.junit.Test;
 
 public class TestPay {
 
-    @Test
-    public void test2() {
+    //@Test
+    public void test() {
         String ALIPAY_PUBLIC_KEY = "你的公钥";
         String APP_PRIVATE_KEY = "你的私钥";
 
@@ -32,10 +32,5 @@ public class TestPay {
         alipayTradePagePayCusRequest.setOrderId("20210817010101004");
         AlipayTradePagePayCusResponse payResponse = payClient.pay(alipayTradePagePayCusRequest);
         System.out.println(payResponse);
-    }
-
-    @Test
-    public void test1() throws AlipayApiException {
-
     }
 }
