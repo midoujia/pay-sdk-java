@@ -2,19 +2,19 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.midoujia.pay</groupId>
-    <artifactId>pay-sdk</artifactId>
-    <version>1.0.0-RELEASE</version>
+    <groupId>com.midoujia</groupId>
+    <artifactId>pay-sdk-java</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>pay-sdk</name>
+    <name>pay-sdk-java</name>
     <description>支付sdk</description>
 
-    <url>https://github.com/midoujia/pay-sdk</url>
+    <url>https://github.com/midoujia/pay-sdk-java</url>
 
     <scm>
-        <url>https://github.com/midoujia/pay-sdk</url>
-        <connection>scm:git:https://github.com/midoujia/pay-sdk.git</connection>
-        <developerConnection>scm:git:https://github.com/midoujia/pay-sdk.git</developerConnection>
+        <url>https://github.com/midoujia/pay-sdk-java</url>
+        <connection>scm:git:https://github.com/midoujia/pay-sdk-java.git</connection>
+        <developerConnection>scm:git:https://github.com/midoujia/pay-sdk-java.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
