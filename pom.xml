@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.midoujia</groupId>
     <artifactId>pay-sdk-java</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <name>pay-sdk-java</name>
     <description>最流行的支付SDK for java</description>
