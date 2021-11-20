@@ -2,7 +2,7 @@ pay-sdk-java
 =
 [![Maven Central](https://img.shields.io/badge/maven--central-v1.0.0-green)](https://mvnrepository.com/artifact/com.midoujia/pay-sdk-java)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmidoujia%2Fpay-sdk-java.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmidoujia%2Fpay-sdk-java?ref=badge_shield)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a2a4867c87d4d15a8beba06d2e49635)](https://app.codacy.com/gh/midoujia/pay-sdk-java/dashboard)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/17833dfd82d34624ab5623d736bc376d)](https://app.codacy.com/gh/midoujia/pay-sdk-java/dashboard)
 
 ## 介绍 
 
