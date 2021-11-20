@@ -7,7 +7,7 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>pay-sdk-java</name>
-    <description>支付sdk</description>
+    <description>最流行的支付SDK for java</description>
 
     <url>https://github.com/midoujia/pay-sdk-java</url>
 
@@ -158,8 +158,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.0</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>1.6</source>
+                    <target>1.6</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
