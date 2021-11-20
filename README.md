@@ -8,14 +8,16 @@
 
 ### 快速接入
 
+Maven 依赖
 ```xml
-        <dependency>
-            <groupId>com.midoujia</groupId>
-            <artifactId>pay-sdk-java</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+<dependency>
+    <groupId>com.midoujia</groupId>
+    <artifactId>pay-sdk-java</artifactId>
+    <version>1.0.0</version>
+</dependency>
 ```
 
+Demo实例
 ```java
 public class Demo01 {
     @Test
