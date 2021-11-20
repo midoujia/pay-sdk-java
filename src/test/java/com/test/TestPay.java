@@ -21,6 +21,8 @@ public class TestPay {
         aliPayConfig.setAppId("2021000116697530");
         aliPayConfig.setPrivateKey(APP_PRIVATE_KEY);
         aliPayConfig.setAliPayPublicKey(ALIPAY_PUBLIC_KEY);
+        // 开启沙箱环境
+        aliPayConfig.setSandbox(true);
 
         PayClient payClient = new DefaultPayClient(aliPayConfig);
         // PayClient payClient = new AlipayServiceClient(aliPayConfig);

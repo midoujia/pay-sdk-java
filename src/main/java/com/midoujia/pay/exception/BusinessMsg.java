@@ -12,6 +12,7 @@ public enum BusinessMsg implements Business {
      */
     Fail("99999", "fail"),
     Success("00000", "success"),
+    ParamLoss("99998", "param loss"),
 
     /**
      * 业务异常Code码

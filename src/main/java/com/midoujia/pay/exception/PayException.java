@@ -14,8 +14,8 @@ public class PayException extends RuntimeException {
         this.business = business;
     }
 
-    public PayException(Business business, Object data) {
-        super(business.getMsg());
+    public PayException(Business business, String data) {
+        super(business.getMsg() + data);
         this.business = business;
         this.data = data;
     }

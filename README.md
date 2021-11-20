@@ -36,6 +36,8 @@ public class Demo01 {
         aliPayConfig.setAppId("2021000116697530");
         aliPayConfig.setPrivateKey(APP_PRIVATE_KEY);
         aliPayConfig.setAliPayPublicKey(ALIPAY_PUBLIC_KEY);
+        // 开启沙箱环境
+        aliPayConfig.setSandbox(true);
 
         PayClient payClient = new DefaultPayClient(aliPayConfig);
         // PayClient payClient = new AlipayServiceClient(aliPayConfig);
@@ -46,7 +48,7 @@ public class Demo01 {
         alipayTradePagePayCusRequest.setOrderName("测试商品");
         alipayTradePagePayCusRequest.setOrderId("20210817010101004");
         AlipayTradePagePayCusResponse payResponse = payClient.pay(alipayTradePagePayCusRequest);
-        System.out.println(payResponse);
+        System.out.println(payResponse.getBody());
     }
 }
 ```

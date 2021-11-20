@@ -11,12 +11,6 @@
 
     <url>https://github.com/midoujia/pay-sdk-java</url>
 
-    <scm>
-        <url>https://github.com/midoujia/pay-sdk-java</url>
-        <connection>scm:git:https://github.com/midoujia/pay-sdk-java.git</connection>
-        <developerConnection>scm:git:https://github.com/midoujia/pay-sdk-java.git</developerConnection>
-    </scm>
-
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -28,6 +22,19 @@
         </repository>
     </distributionManagement>
 
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/midoujia/pay-sdk-java</url>
+        <connection>scm:git:https://github.com/midoujia/pay-sdk-java.git</connection>
+        <developerConnection>scm:git:https://github.com/midoujia/pay-sdk-java.git</developerConnection>
+    </scm>
+
     <developers>
         <developer>
             <id>zhaofulu</id>
@@ -37,23 +44,11 @@
         </developer>
     </developers>
 
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
-
     <dependencies>
         <dependency>
             <groupId>com.alipay.sdk</groupId>
             <artifactId>alipay-sdk-java</artifactId>
             <version>4.18.0.ALL</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.16</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -65,11 +60,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.5</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>

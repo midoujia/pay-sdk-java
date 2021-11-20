@@ -9,7 +9,6 @@ import com.midoujia.pay.exception.BusinessMsg;
 import com.midoujia.pay.exception.PayException;
 import com.midoujia.pay.model.PayRequest;
 import com.midoujia.pay.model.PayResponse;
-import com.midoujia.pay.service.DefaultPayClient;
 import com.midoujia.pay.service.alipay.AlipayTradePagePayImpl;
 
 /**
@@ -22,9 +21,18 @@ public class AlipayServiceClient extends DefaultPayClient {
     public AlipayServiceClient() {}
 
     public AlipayServiceClient(AliPayConfig aliPayConfig) {
-        // 初始化 AlipayClient
-        this.alipayClient = new DefaultAlipayClient(AliPayConstants.SERVER_URL,
-                aliPayConfig.getAppId(), aliPayConfig.getPrivateKey(), AliPayConstants.FORMAT, AliPayConstants.CHARSET_UTF8, aliPayConfig.getAliPayPublicKey(), AliPayConstants.SIGN_TYPE_RSA2);
+        // 是否是沙箱环境
+        if (aliPayConfig.getSandbox()) {
+            // 沙箱环境初始化 AlipayClient
+            this.alipayClient = new DefaultAlipayClient(AliPayConstants.SERVER_URL_DEV,
+                    aliPayConfig.getAppId(), aliPayConfig.getPrivateKey(), AliPayConstants.FORMAT,
+                    AliPayConstants.CHARSET_UTF8, aliPayConfig.getAliPayPublicKey(), AliPayConstants.SIGN_TYPE_RSA2);
+        } else {
+            // 线上环境初始化 AlipayClient
+            this.alipayClient = new DefaultAlipayClient(AliPayConstants.SERVER_URL,
+                    aliPayConfig.getAppId(), aliPayConfig.getPrivateKey(), AliPayConstants.FORMAT,
+                    AliPayConstants.CHARSET_UTF8, aliPayConfig.getAliPayPublicKey(), AliPayConstants.SIGN_TYPE_RSA2);
+        }
     }
 
     public void setAlipayClient(AlipayClient alipayClient) {

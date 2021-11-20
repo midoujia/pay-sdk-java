@@ -9,14 +9,12 @@ import com.midoujia.pay.exception.PayException;
 import com.midoujia.pay.model.PayRequest;
 import com.midoujia.pay.model.PayResponse;
 
-import java.util.Objects;
-
 /**
  * 支付实现
  *
  * @author zfldiv@163.com
  */
-public class DefaultPayClient implements PayClient {
+public class DefaultPayClient extends ServiceSupport implements PayClient {
 
     private AliPayConfig aliPayConfig;
 
@@ -39,7 +37,9 @@ public class DefaultPayClient implements PayClient {
 
     @Override
     public <T extends PayResponse> T pay(PayRequest<T> request) {
-        Objects.requireNonNull(request, "request params must not be null");
+        if (request == null) {
+            throw new PayException(BusinessMsg.ParamLoss, "request params must not be null.");
+        }
         // 支付宝支付
         if (PayPlatformEnum.ALIPAY == request.getPayTypeEnum().getPlatform()) {
             AlipayServiceClient aliPayService = new AlipayServiceClient(this.aliPayConfig);

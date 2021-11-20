@@ -10,6 +10,9 @@ public interface AliPayConstants {
     /** 阿里支付网关接口地址. */
     String SERVER_URL = "https://openapi.alipay.com/gateway.do";
 
+    /** 阿里支付网关沙箱接口地址. */
+    String SERVER_URL_DEV = "https://openapi.alipaydev.com/gateway.do";
+
     /** 销售产品码，与支付宝签约的产品码名称。 注：目前仅支持FAST_INSTANT_TRADE_PAY.  */
     String FAST_INSTANT_TRADE_PAY = "FAST_INSTANT_TRADE_PAY";
 
@@ -24,6 +27,7 @@ public interface AliPayConstants {
 
     /** JSON格式 */
     String FORMAT = "json";
+
 
 
 

@@ -12,8 +12,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -23,8 +21,6 @@ import java.io.IOException;
  * @author zfldiv@163.com
  */
 public class HttpUtil {
-
-    private static Logger logger = LoggerFactory.getLogger(HttpUtil.class);
 
     /**
      * http post调用http接口

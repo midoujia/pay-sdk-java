@@ -1,32 +1,28 @@
 package com.midoujia.pay.config;
 
-import java.util.Objects;
+import com.midoujia.pay.exception.BusinessMsg;
+import com.midoujia.pay.exception.PayException;
+import com.midoujia.pay.utils.StringUtil;
 
 /**
  * @author zfldiv@163.com
  */
 public class PayConfig {
 
-    /**
-     * 支付完成后的异步通知地址.
-     */
+    /** 支付完成后的异步通知地址. */
     private String notifyUrl;
 
-    /**
-     * 支付完成后的同步返回地址.
-     */
+    /** 支付完成后的同步返回地址. */
     private String returnUrl;
 
-    /**
-     * 默认非沙箱测试
-     */
-    private boolean sandbox = false;
+    /** 默认非沙箱测试 */
+    private Boolean sandbox = false;
 
-    public boolean isSandbox() {
+    public Boolean getSandbox() {
         return sandbox;
     }
 
-    public void setSandbox(boolean sandbox) {
+    public void setSandbox(Boolean sandbox) {
         this.sandbox = sandbox;
     }
 
@@ -47,7 +43,9 @@ public class PayConfig {
     }
 
     public void check() {
-        Objects.requireNonNull(notifyUrl, "config param 'notifyUrl' is null.");
+        if (StringUtil.isEmpty(notifyUrl)) {
+            throw new PayException(BusinessMsg.ParamLoss, "config param 'notifyUrl' is null.");
+        }
         if (!notifyUrl.startsWith("http") && !notifyUrl.startsWith("https")) {
             throw new IllegalArgumentException("config param 'notifyUrl' does not start with http/https.");
         }
