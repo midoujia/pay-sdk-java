@@ -1,4 +1,4 @@
-支付最牛逼的sdk 文档
+最流行的支付SDK for java
 
 ### V1.0.0 版本内容更新
 1. 接入支付宝支付
@@ -7,6 +7,14 @@
 1. 低依赖
 
 ### 快速接入
+
+```xml
+        <dependency>
+            <groupId>com.midoujia</groupId>
+            <artifactId>pay-sdk-java</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+```
 
 ```java
 public class Demo01 {
