@@ -23,14 +23,18 @@ public class DefaultPayClient extends ServiceSupport implements PayClient {
     public DefaultPayClient() {}
 
     public DefaultPayClient(AliPayConfig aliPayConfig) {
+        aliPayConfig.check();
         this.aliPayConfig = aliPayConfig;
     }
 
     public DefaultPayClient(WxPayConfig wxPayConfig) {
+        wxPayConfig.check();
         this.wxPayConfig = wxPayConfig;
     }
 
     public DefaultPayClient(AliPayConfig aliPayConfig, WxPayConfig wxPayConfig) {
+        aliPayConfig.check();
+        wxPayConfig.check();
         this.aliPayConfig = aliPayConfig;
         this.wxPayConfig = wxPayConfig;
     }
