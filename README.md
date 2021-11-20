@@ -19,7 +19,7 @@ Maven 依赖
 <dependency>
     <groupId>com.midoujia</groupId>
     <artifactId>pay-sdk-java</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
