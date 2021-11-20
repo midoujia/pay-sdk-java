@@ -1,12 +1,15 @@
-# 最流行的支付SDK for java
+pay-sdk-java
+=
 
-### V1.0.0 版本内容更新
-1. 接入支付宝支付
+## 介绍 
 
-### 优点
-1. 低依赖
+最流行的支付SDK for java
 
-### 快速接入
+## 已支持功能
+
+- 接入支付宝PC web支付
+
+## 快速接入
 
 Maven 依赖
 ```xml
@@ -17,6 +20,7 @@ Maven 依赖
 </dependency>
 ```
 
+## 实例
 Demo实例
 ```java
 public class Demo01 {
@@ -43,3 +47,7 @@ public class Demo01 {
     }
 }
 ```
+
+## License
+
+[MIT](https://github.com/midoujia/pay-sdk-java/blob/main/LICENSE)
