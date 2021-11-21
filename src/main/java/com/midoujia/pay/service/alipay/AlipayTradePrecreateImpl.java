@@ -36,7 +36,7 @@ public class AlipayTradePrecreateImpl extends AlipayServiceClient {
         AlipayTradePrecreateRequest request = new AlipayTradePrecreateRequest();
         request.setNotifyUrl("");
         JSONObject bizContent = new JSONObject();
-        bizContent.put("out_trade_no", alipayTradePrecreateCusRequest.getOrderId());
+        bizContent.put("out_trade_no", alipayTradePrecreateCusRequest.getOrderNo());
         bizContent.put("total_amount", alipayTradePrecreateCusRequest.getOrderAmount());
         bizContent.put("subject", alipayTradePrecreateCusRequest.getOrderName());
 
@@ -90,12 +90,12 @@ public class AlipayTradePrecreateImpl extends AlipayServiceClient {
             }
             AlipayTradePrecreateCusResponse alipayTradePrecreateCusResponse = new AlipayTradePrecreateCusResponse();
             alipayTradePrecreateCusResponse.setBody(response.getBody());
-            alipayTradePrecreateCusResponse.setOrderNo(req.getOrderId());
+            alipayTradePrecreateCusResponse.setOrderNo(req.getOrderNo());
             alipayTradePrecreateCusResponse.setOrderAmount(alipayTradePrecreateCusRequest.getOrderAmount());
             alipayTradePrecreateCusResponse.setOrderName(alipayTradePrecreateCusRequest.getOrderName());
             alipayTradePrecreateCusResponse.setQrCode(response.getQrCode());
             alipayTradePrecreateCusResponse.setReqParam(bizContent.toString());
-            alipayTradePrecreateCusResponse.setPayType(PayTypeEnum.ALIPAY_QRCODE);
+            alipayTradePrecreateCusResponse.setPayType(alipayTradePrecreateCusRequest.getPayTypeEnum());
             return (T) alipayTradePrecreateCusResponse;
         } catch (AlipayApiException alipayApiException) {
             throw new PayException(BusinessMsg.Fail, alipayApiException.getMessage());

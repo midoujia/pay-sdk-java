@@ -29,7 +29,7 @@ public class AlipayTradePagePayImpl extends AlipayServiceClient {
         request.setNotifyUrl("");
         request.setReturnUrl("");
         JSONObject bizContent = new JSONObject();
-        bizContent.put("out_trade_no", alipayTradePagePayCusRequest.getOrderId());
+        bizContent.put("out_trade_no", alipayTradePagePayCusRequest.getOrderNo());
         bizContent.put("total_amount", alipayTradePagePayCusRequest.getOrderAmount());
         bizContent.put("subject", alipayTradePagePayCusRequest.getOrderName());
         bizContent.put("product_code", AliPayConstants.FAST_INSTANT_TRADE_PAY);
@@ -44,7 +44,8 @@ public class AlipayTradePagePayImpl extends AlipayServiceClient {
             }
             final AlipayTradePagePayCusResponse alipayTradePagePayCusResponse = new AlipayTradePagePayCusResponse();
             alipayTradePagePayCusResponse.setBody(response.getBody());
-            alipayTradePagePayCusResponse.setOrderId(req.getOrderId());
+            alipayTradePagePayCusResponse.setOrderId(req.getOrderNo());
+            alipayTradePagePayCusResponse.setPayTypeEnum(alipayTradePagePayCusRequest.getPayTypeEnum());
             return (T) alipayTradePagePayCusResponse;
         } catch (AlipayApiException alipayApiException) {
             throw new PayException(BusinessMsg.Fail);

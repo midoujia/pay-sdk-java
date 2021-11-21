@@ -20,22 +20,6 @@ public interface PayRequest<T extends PayResponse> {
      *
      * @return String
      */
-    String getOrderId();
-    void setOrderId(String orderId);
-
-    /**
-     * 订单金额.
-     *
-     * @return Double
-     */
-    Double getOrderAmount();
-    void setOrderAmount(Double orderAmount);
-
-    /**
-     * 订单名字.
-     *
-     * @return String
-     */
-    String getOrderName();
-    void setOrderName(String orderName);
+    String getOrderNo();
+    void setOrderNo(String orderNo);
 }

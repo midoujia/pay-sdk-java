@@ -19,6 +19,7 @@ public enum BusinessMsg implements Business {
      */
     PayTypeError("00001", "错误的支付方式"),
     PayConfigError("00002", "请用有参构造进行初始化配置！"),
+    TradeNotExist("00003", "交易不存在"),
     ;
 
     private String code;

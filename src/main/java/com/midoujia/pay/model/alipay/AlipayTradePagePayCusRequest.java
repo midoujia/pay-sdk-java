@@ -10,8 +10,13 @@ import com.midoujia.pay.model.PayRequest;
  * @author zfldiv@163.com
  */
 public class AlipayTradePagePayCusRequest implements PayRequest<AlipayTradePagePayCusResponse> {
+
+    /** 支付类型 */
     private PayTypeEnum payTypeEnum;
-    private String orderId;
+
+    /** 订单号 */
+    private String orderNo;
+
     private Double orderAmount;
     private String orderName;
 
@@ -26,31 +31,27 @@ public class AlipayTradePagePayCusRequest implements PayRequest<AlipayTradePageP
     }
 
     @Override
-    public String getOrderId() {
-        return orderId;
+    public String getOrderNo() {
+        return orderNo;
     }
 
     @Override
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
-    @Override
     public Double getOrderAmount() {
         return orderAmount;
     }
 
-    @Override
     public void setOrderAmount(Double orderAmount) {
         this.orderAmount = orderAmount;
     }
 
-    @Override
     public String getOrderName() {
         return orderName;
     }
 
-    @Override
     public void setOrderName(String orderName) {
         this.orderName = orderName;
     }

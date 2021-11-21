@@ -28,6 +28,9 @@ public interface AliPayConstants {
     /** JSON格式 */
     String FORMAT = "json";
 
+    /** 支付宝返回码 - 成功. */
+    String RESPONSE_CODE_SUCCESS = "10000";
+
 
 
 
@@ -41,8 +44,7 @@ public interface AliPayConstants {
     /** 支付宝网关. 开放平台 见https://b.alipay.com/order/pidAndKey.htm */
     String ALIPAY_GATEWAY_OPEN     = "https://openapi.alipay.com/";
 
-    /** 支付宝返回码 - 成功. */
-    String RESPONSE_CODE_SUCCESS = "10000";
+
 
     /** 支付宝消息验证地址. */
     String ALIPAY_VERIFY_URL = "https://mapi.alipay.com/gateway.do?service=notify_verify&";

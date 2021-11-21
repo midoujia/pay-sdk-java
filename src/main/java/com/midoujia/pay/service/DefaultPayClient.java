@@ -51,4 +51,14 @@ public class DefaultPayClient extends ServiceSupport implements PayClient {
         }
         throw new PayException(BusinessMsg.PayTypeError);
     }
+
+    @Override
+    public <T extends PayResponse> T queryOrder(PayRequest<T> request) throws PayException {
+        // 支付宝订单查询
+        if (PayPlatformEnum.ALIPAY == request.getPayTypeEnum().getPlatform()) {
+            AlipayServiceClient aliPayService = new AlipayServiceClient(this.aliPayConfig);
+            return aliPayService.queryOrder(request);
+        }
+        throw new PayException(BusinessMsg.PayTypeError);
+    }
 }

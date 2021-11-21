@@ -11,7 +11,7 @@ public enum PayPlatformEnum {
      * 支付平台
      */
     ALIPAY("alipay", "支付宝"),
-    Wechat("wechat", "微信"),
+    WECHAT("wechat", "微信"),
     ;
 
     private String code;

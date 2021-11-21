@@ -11,6 +11,7 @@ import com.midoujia.pay.model.PayRequest;
 import com.midoujia.pay.model.PayResponse;
 import com.midoujia.pay.service.alipay.AlipayTradePagePayImpl;
 import com.midoujia.pay.service.alipay.AlipayTradePrecreateImpl;
+import com.midoujia.pay.service.alipay.AlipayTradeQueryImpl;
 
 /**
  * @author zfldiv@163.com
@@ -52,5 +53,12 @@ public class AlipayServiceClient extends DefaultPayClient {
             return alipayTradePrecreate.pay(request);
         }
         throw new PayException(BusinessMsg.PayTypeError);
+    }
+
+    @Override
+    public <T extends PayResponse> T queryOrder(PayRequest<T> request) throws PayException {
+        AlipayTradeQueryImpl alipayTradeQuery = new AlipayTradeQueryImpl();
+        alipayTradeQuery.setAlipayClient(alipayClient);
+        return alipayTradeQuery.queryOrder(request);
     }
 }

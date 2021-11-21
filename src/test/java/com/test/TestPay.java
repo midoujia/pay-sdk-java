@@ -31,7 +31,7 @@ public class TestPay {
         alipayTradePagePayCusRequest.setPayTypeEnum(PayTypeEnum.ALIPAY_PC);
         alipayTradePagePayCusRequest.setOrderAmount(0.01);
         alipayTradePagePayCusRequest.setOrderName("测试商品");
-        alipayTradePagePayCusRequest.setOrderId("20210817010101004");
+        alipayTradePagePayCusRequest.setOrderNo("20210817010101004");
         AlipayTradePagePayCusResponse payResponse = payClient.pay(alipayTradePagePayCusRequest);
         System.out.println(payResponse);
     }
