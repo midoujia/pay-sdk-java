@@ -1,5 +1,7 @@
 package com.midoujia.pay.model;
 
+import com.midoujia.pay.enums.PayTypeEnum;
+
 import java.io.Serializable;
 
 /**
@@ -9,11 +11,22 @@ import java.io.Serializable;
  */
 public class PayResponse implements Serializable {
 
-    /** 第三方支付的流水号 */
+    /** 支付方式 */
+    private PayTypeEnum payType;
+
+    /** 第三方支付的流水号（订单号） */
     private String orderNo;
 
-    /** 支付宝App支付返回的请求参数信息 */
-    private String orderInfo;
+    /** 支付返回的请求参数信息 */
+    private String reqParam;
+
+    public PayTypeEnum getPayType() {
+        return payType;
+    }
+
+    public void setPayType(PayTypeEnum payType) {
+        this.payType = payType;
+    }
 
     public String getOrderNo() {
         return orderNo;
@@ -23,11 +36,11 @@ public class PayResponse implements Serializable {
         this.orderNo = orderNo;
     }
 
-    public String getOrderInfo() {
-        return orderInfo;
+    public String getReqParam() {
+        return reqParam;
     }
 
-    public void setOrderInfo(String orderInfo) {
-        this.orderInfo = orderInfo;
+    public void setReqParam(String reqParam) {
+        this.reqParam = reqParam;
     }
 }

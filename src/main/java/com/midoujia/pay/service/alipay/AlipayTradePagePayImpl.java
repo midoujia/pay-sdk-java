@@ -15,6 +15,8 @@ import com.midoujia.pay.service.AlipayServiceClient;
 
 /**
  * alipay.trade.page.pay(统一收单下单并支付页面接口)
+ * 文档：https://opendocs.alipay.com/open/028r8t?scene=22
+ *
  * @author zfldiv@163.com
  */
 public class AlipayTradePagePayImpl extends AlipayServiceClient {

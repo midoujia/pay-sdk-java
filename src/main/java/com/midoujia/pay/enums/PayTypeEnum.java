@@ -17,6 +17,8 @@ public enum PayTypeEnum {
      */
     ALIPAY_APP("alipay_app", ALIPAY, "支付宝app"),
     ALIPAY_PC("alipay_pc", ALIPAY, "支付宝pc"),
+    ALIPAY_QRCODE("alipay_precreate", ALIPAY, "支付宝统一收单线下交易预创建"),
+    ALIPAY_BARCODE("alipay_barcode", ALIPAY, "支付宝统一收单交易支付接口(付款码)"),
     ;
 
     private String code;

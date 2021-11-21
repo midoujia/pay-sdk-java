@@ -4,6 +4,8 @@ import com.midoujia.pay.enums.PayTypeEnum;
 import com.midoujia.pay.model.PayResponse;
 
 /**
+ * alipay.trade.page.pay(统一收单下单并支付页面接口) 返回体
+ *
  * @author zfldiv@163.com
  */
 public class AlipayTradePagePayCusResponse extends PayResponse {

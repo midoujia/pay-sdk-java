@@ -5,6 +5,8 @@ import com.midoujia.pay.model.PayRequest;
 
 
 /**
+ * alipay.trade.page.pay(统一收单下单并支付页面接口) 请求体
+ *
  * @author zfldiv@163.com
  */
 public class AlipayTradePagePayCusRequest implements PayRequest<AlipayTradePagePayCusResponse> {

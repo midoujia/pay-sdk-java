@@ -10,6 +10,7 @@ import com.midoujia.pay.exception.PayException;
 import com.midoujia.pay.model.PayRequest;
 import com.midoujia.pay.model.PayResponse;
 import com.midoujia.pay.service.alipay.AlipayTradePagePayImpl;
+import com.midoujia.pay.service.alipay.AlipayTradePrecreateImpl;
 
 /**
  * @author zfldiv@163.com
@@ -45,6 +46,10 @@ public class AlipayServiceClient extends DefaultPayClient {
             AlipayTradePagePayImpl alipayTradePagePay = new AlipayTradePagePayImpl();
             alipayTradePagePay.setAlipayClient(alipayClient);
             return alipayTradePagePay.pay(request);
+        } else if (request.getPayTypeEnum() == PayTypeEnum.ALIPAY_QRCODE) {
+            AlipayTradePrecreateImpl alipayTradePrecreate = new AlipayTradePrecreateImpl();
+            alipayTradePrecreate.setAlipayClient(alipayClient);
+            return alipayTradePrecreate.pay(request);
         }
         throw new PayException(BusinessMsg.PayTypeError);
     }
