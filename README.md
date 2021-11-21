@@ -25,26 +25,6 @@ Maven 依赖
 </dependency>
 ```
 
-Springboot项目集成：
-
-```java
-@Configuration
-public class ApplicationConfig {
-
-    @Bean
-    @ConditionalOnMissingBean(name = {"payClient"})
-    public PayClient payClient(){
-        String ALIPAY_PUBLIC_KEY = "Alipay公钥";
-        String APP_PRIVATE_KEY = "你生成的私钥";
-        AliPayConfig aliPayConfig = new AliPayConfig();
-        aliPayConfig.setAppId("APPID");
-        aliPayConfig.setPrivateKey(APP_PRIVATE_KEY);
-        aliPayConfig.setAliPayPublicKey(ALIPAY_PUBLIC_KEY);
-        return new DefaultPayClient(aliPayConfig);
-    }
-}
-```
-
 ## 实例
 Demo实例1：
 ```java
@@ -75,9 +55,25 @@ public class Demo01 {
 }
 ```
 
-Demo实例2：
+Demo实例2 Springboot项目集成：
 
 ```java
+@Configuration
+public class ApplicationConfig {
+
+    @Bean
+    @ConditionalOnMissingBean(name = {"payClient"})
+    public PayClient payClient(){
+        String ALIPAY_PUBLIC_KEY = "Alipay公钥";
+        String APP_PRIVATE_KEY = "你生成的私钥";
+        AliPayConfig aliPayConfig = new AliPayConfig();
+        aliPayConfig.setAppId("APPID");
+        aliPayConfig.setPrivateKey(APP_PRIVATE_KEY);
+        aliPayConfig.setAliPayPublicKey(ALIPAY_PUBLIC_KEY);
+        return new DefaultPayClient(aliPayConfig);
+    }
+}
+
 public class Demo02 {
     
     @Autowired
