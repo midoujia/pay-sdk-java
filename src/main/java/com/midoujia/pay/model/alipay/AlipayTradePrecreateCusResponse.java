@@ -12,7 +12,7 @@ public class AlipayTradePrecreateCusResponse extends PayResponse {
     /** 订单金额 */
     private Double orderAmount;
 
-    /** 订单标题。 注意：不可使用特殊字符，如 /，=，& 等。*/
+    /** 订单标题。*/
     private String orderName;
 
     /** 当前预下单请求生成的二维码码串，可以用二维码生成工具根据该码串值生成对应的二维码 */

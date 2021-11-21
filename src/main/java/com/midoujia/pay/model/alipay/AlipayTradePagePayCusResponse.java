@@ -10,7 +10,6 @@ import com.midoujia.pay.model.PayResponse;
  */
 public class AlipayTradePagePayCusResponse extends PayResponse {
     private PayTypeEnum payTypeEnum;
-    private String orderId;
     private Double orderAmount;
     private String orderName;
     private String body;
@@ -21,14 +20,6 @@ public class AlipayTradePagePayCusResponse extends PayResponse {
 
     public void setPayTypeEnum(PayTypeEnum payTypeEnum) {
         this.payTypeEnum = payTypeEnum;
-    }
-
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
     }
 
     public Double getOrderAmount() {

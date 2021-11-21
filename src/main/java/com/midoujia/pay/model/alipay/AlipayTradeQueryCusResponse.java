@@ -1,7 +1,6 @@
 package com.midoujia.pay.model.alipay;
 
 import com.midoujia.pay.enums.AlipayTradeStatusEnum;
-import com.midoujia.pay.enums.OrderStatusEnum;
 import com.midoujia.pay.model.PayResponse;
 
 /**

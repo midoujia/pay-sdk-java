@@ -42,10 +42,13 @@ public class AlipayTradePagePayImpl extends AlipayServiceClient {
             } else {
                 System.out.println("调用失败");
             }
-            final AlipayTradePagePayCusResponse alipayTradePagePayCusResponse = new AlipayTradePagePayCusResponse();
+            AlipayTradePagePayCusResponse alipayTradePagePayCusResponse = new AlipayTradePagePayCusResponse();
             alipayTradePagePayCusResponse.setBody(response.getBody());
-            alipayTradePagePayCusResponse.setOrderId(req.getOrderNo());
             alipayTradePagePayCusResponse.setPayTypeEnum(alipayTradePagePayCusRequest.getPayTypeEnum());
+            alipayTradePagePayCusResponse.setPayTypeEnum(req.getPayTypeEnum());
+            alipayTradePagePayCusResponse.setReqParam(bizContent.toString());
+            alipayTradePagePayCusResponse.setOrderAmount(alipayTradePagePayCusRequest.getOrderAmount());
+            alipayTradePagePayCusResponse.setOrderNo(alipayTradePagePayCusRequest.getOrderNo());
             return (T) alipayTradePagePayCusResponse;
         } catch (AlipayApiException alipayApiException) {
             throw new PayException(BusinessMsg.Fail);
