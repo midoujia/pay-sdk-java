@@ -24,12 +24,12 @@ public class TestPay {
         PayClient payClient = new DefaultPayClient(aliPayConfig);
         // PayClient payClient = new AlipayServiceClient(aliPayConfig);
 
-        MiDouAlipayTradePagePayRequest alipayTradePagePayCusRequest = new MiDouAlipayTradePagePayRequest();
-        alipayTradePagePayCusRequest.setPayTypeEnum(PayTypeEnum.ALIPAY_PC);
-        alipayTradePagePayCusRequest.setOrderAmount(0.01);
-        alipayTradePagePayCusRequest.setOrderName("测试商品");
-        alipayTradePagePayCusRequest.setOrderNo("20210817010101004");
-        MiDouAlipayTradePagePayResponse payResponse = payClient.pay(alipayTradePagePayCusRequest);
+        MiDouAlipayTradePagePayRequest miDouAlipayTradePagePayRequest = new MiDouAlipayTradePagePayRequest();
+        miDouAlipayTradePagePayRequest.setPayTypeEnum(PayTypeEnum.ALIPAY_PC);
+        miDouAlipayTradePagePayRequest.setOrderAmount(0.01);
+        miDouAlipayTradePagePayRequest.setOrderName("测试商品");
+        miDouAlipayTradePagePayRequest.setOrderNo("20210817010101004");
+        MiDouAlipayTradePagePayResponse payResponse = payClient.pay(miDouAlipayTradePagePayRequest);
         System.out.println(payResponse);
     }
 }
