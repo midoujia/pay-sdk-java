@@ -33,7 +33,17 @@ public class AlipayTradeQueryImpl extends AlipayServiceClient {
         try {
             AlipayTradeQueryResponse response = alipayClient.execute(request);
             if(response.isSuccess()){
-                System.out.println("调用成功");
+                MiDouAlipayTradeQueryResponse miDouAlipayTradeQueryResponse = new MiDouAlipayTradeQueryResponse();
+                miDouAlipayTradeQueryResponse.setBody(response.getBody());
+                miDouAlipayTradeQueryResponse.setOrderNo(req.getOrderNo());
+                miDouAlipayTradeQueryResponse.setReqParam(bizContent.toString());
+                miDouAlipayTradeQueryResponse.setOrderAmount(Double.valueOf(response.getBuyerPayAmount()));
+                miDouAlipayTradeQueryResponse.setBuyerLoginId(response.getBuyerLogonId());
+                miDouAlipayTradeQueryResponse.setBuyerUserId(response.getBuyerUserId());
+                // 设置交易状态
+                miDouAlipayTradeQueryResponse.setTradeStatus(AlipayTradeStatusEnum.findByName(response.getTradeStatus()));
+                miDouAlipayTradeQueryResponse.setPayType(miDouAlipayTradeQueryRequest.getPayTypeEnum());
+                return (T) miDouAlipayTradeQueryResponse;
             } else {
                 // 订单不存在
                 if ("ACQ.TRADE_NOT_EXIST".equals(response.getSubCode())) {
@@ -41,17 +51,6 @@ public class AlipayTradeQueryImpl extends AlipayServiceClient {
                 }
                 throw new PayException(BusinessMsg.Fail, response.getSubMsg());
             }
-            MiDouAlipayTradeQueryResponse miDouAlipayTradeQueryResponse = new MiDouAlipayTradeQueryResponse();
-            miDouAlipayTradeQueryResponse.setBody(response.getBody());
-            miDouAlipayTradeQueryResponse.setOrderNo(req.getOrderNo());
-            miDouAlipayTradeQueryResponse.setReqParam(bizContent.toString());
-            miDouAlipayTradeQueryResponse.setOrderAmount(Double.valueOf(response.getBuyerPayAmount()));
-            miDouAlipayTradeQueryResponse.setBuyerLoginId(response.getBuyerLogonId());
-            miDouAlipayTradeQueryResponse.setBuyerUserId(response.getBuyerUserId());
-            // 设置交易状态
-            miDouAlipayTradeQueryResponse.setTradeStatus(AlipayTradeStatusEnum.findByName(response.getTradeStatus()));
-            miDouAlipayTradeQueryResponse.setPayType(miDouAlipayTradeQueryRequest.getPayTypeEnum());
-            return (T) miDouAlipayTradeQueryResponse;
         } catch (AlipayApiException alipayApiException) {
             throw new PayException(BusinessMsg.Fail, alipayApiException.getMessage());
         }
