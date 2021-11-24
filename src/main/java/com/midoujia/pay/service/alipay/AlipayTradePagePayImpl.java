@@ -9,8 +9,8 @@ import com.midoujia.pay.exception.BusinessMsg;
 import com.midoujia.pay.exception.PayException;
 import com.midoujia.pay.model.PayRequest;
 import com.midoujia.pay.model.PayResponse;
-import com.midoujia.pay.model.alipay.AlipayTradePagePayCusRequest;
-import com.midoujia.pay.model.alipay.AlipayTradePagePayCusResponse;
+import com.midoujia.pay.model.alipay.MiDouAlipayTradePagePayRequest;
+import com.midoujia.pay.model.alipay.MiDouAlipayTradePagePayResponse;
 import com.midoujia.pay.service.AlipayServiceClient;
 
 /**
@@ -23,15 +23,15 @@ public class AlipayTradePagePayImpl extends AlipayServiceClient {
 
     @Override
     public <T extends PayResponse> T pay(PayRequest<T> req) {
-        AlipayTradePagePayCusRequest alipayTradePagePayCusRequest = (AlipayTradePagePayCusRequest) req;
+        MiDouAlipayTradePagePayRequest miDouAlipayTradePagePayRequest = (MiDouAlipayTradePagePayRequest) req;
 
         AlipayTradePagePayRequest request = new AlipayTradePagePayRequest();
         request.setNotifyUrl("");
         request.setReturnUrl("");
         JSONObject bizContent = new JSONObject();
-        bizContent.put("out_trade_no", alipayTradePagePayCusRequest.getOrderNo());
-        bizContent.put("total_amount", alipayTradePagePayCusRequest.getOrderAmount());
-        bizContent.put("subject", alipayTradePagePayCusRequest.getOrderName());
+        bizContent.put("out_trade_no", miDouAlipayTradePagePayRequest.getOrderNo());
+        bizContent.put("total_amount", miDouAlipayTradePagePayRequest.getOrderAmount());
+        bizContent.put("subject", miDouAlipayTradePagePayRequest.getOrderName());
         bizContent.put("product_code", AliPayConstants.FAST_INSTANT_TRADE_PAY);
 
         request.setBizContent(bizContent.toString());
@@ -42,14 +42,14 @@ public class AlipayTradePagePayImpl extends AlipayServiceClient {
             } else {
                 System.out.println("调用失败");
             }
-            AlipayTradePagePayCusResponse alipayTradePagePayCusResponse = new AlipayTradePagePayCusResponse();
-            alipayTradePagePayCusResponse.setBody(response.getBody());
-            alipayTradePagePayCusResponse.setPayTypeEnum(alipayTradePagePayCusRequest.getPayTypeEnum());
-            alipayTradePagePayCusResponse.setPayTypeEnum(req.getPayTypeEnum());
-            alipayTradePagePayCusResponse.setReqParam(bizContent.toString());
-            alipayTradePagePayCusResponse.setOrderAmount(alipayTradePagePayCusRequest.getOrderAmount());
-            alipayTradePagePayCusResponse.setOrderNo(alipayTradePagePayCusRequest.getOrderNo());
-            return (T) alipayTradePagePayCusResponse;
+            MiDouAlipayTradePagePayResponse miDouAlipayTradePagePayResponse = new MiDouAlipayTradePagePayResponse();
+            miDouAlipayTradePagePayResponse.setBody(response.getBody());
+            miDouAlipayTradePagePayResponse.setPayTypeEnum(miDouAlipayTradePagePayRequest.getPayTypeEnum());
+            miDouAlipayTradePagePayResponse.setPayTypeEnum(req.getPayTypeEnum());
+            miDouAlipayTradePagePayResponse.setReqParam(bizContent.toString());
+            miDouAlipayTradePagePayResponse.setOrderAmount(miDouAlipayTradePagePayRequest.getOrderAmount());
+            miDouAlipayTradePagePayResponse.setOrderNo(miDouAlipayTradePagePayRequest.getOrderNo());
+            return (T) miDouAlipayTradePagePayResponse;
         } catch (AlipayApiException alipayApiException) {
             throw new PayException(BusinessMsg.Fail);
         }

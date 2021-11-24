@@ -8,7 +8,7 @@ import com.midoujia.pay.model.PayRequest;
  *
  * @author zfldiv@163.com
  */
-public class AlipayTradeQueryCusRequest implements PayRequest<AlipayTradeQueryCusResponse> {
+public class MiDouAlipayTradeQueryRequest implements PayRequest<MiDouAlipayTradeQueryResponse> {
 
     /** 支付类型 */
     private PayTypeEnum payTypeEnum;

@@ -1,14 +1,11 @@
 package com.test;
 
-import com.alipay.api.AlipayApiException;
 import com.midoujia.pay.PayClient;
 import com.midoujia.pay.config.AliPayConfig;
 import com.midoujia.pay.enums.PayTypeEnum;
-import com.midoujia.pay.model.alipay.AlipayTradePagePayCusRequest;
-import com.midoujia.pay.model.alipay.AlipayTradePagePayCusResponse;
-import com.midoujia.pay.service.AlipayServiceClient;
+import com.midoujia.pay.model.alipay.MiDouAlipayTradePagePayRequest;
+import com.midoujia.pay.model.alipay.MiDouAlipayTradePagePayResponse;
 import com.midoujia.pay.service.DefaultPayClient;
-import org.junit.Test;
 
 public class TestPay {
 
@@ -27,12 +24,12 @@ public class TestPay {
         PayClient payClient = new DefaultPayClient(aliPayConfig);
         // PayClient payClient = new AlipayServiceClient(aliPayConfig);
 
-        AlipayTradePagePayCusRequest alipayTradePagePayCusRequest = new AlipayTradePagePayCusRequest();
+        MiDouAlipayTradePagePayRequest alipayTradePagePayCusRequest = new MiDouAlipayTradePagePayRequest();
         alipayTradePagePayCusRequest.setPayTypeEnum(PayTypeEnum.ALIPAY_PC);
         alipayTradePagePayCusRequest.setOrderAmount(0.01);
         alipayTradePagePayCusRequest.setOrderName("测试商品");
         alipayTradePagePayCusRequest.setOrderNo("20210817010101004");
-        AlipayTradePagePayCusResponse payResponse = payClient.pay(alipayTradePagePayCusRequest);
+        MiDouAlipayTradePagePayResponse payResponse = payClient.pay(alipayTradePagePayCusRequest);
         System.out.println(payResponse);
     }
 }

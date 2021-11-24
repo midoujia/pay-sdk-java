@@ -2,20 +2,15 @@ package com.midoujia.pay.service.alipay;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
-import com.alipay.api.request.AlipayTradePrecreateRequest;
 import com.alipay.api.request.AlipayTradeQueryRequest;
-import com.alipay.api.response.AlipayTradePrecreateResponse;
 import com.alipay.api.response.AlipayTradeQueryResponse;
 import com.midoujia.pay.enums.AlipayTradeStatusEnum;
-import com.midoujia.pay.enums.PayTypeEnum;
 import com.midoujia.pay.exception.BusinessMsg;
 import com.midoujia.pay.exception.PayException;
 import com.midoujia.pay.model.PayRequest;
 import com.midoujia.pay.model.PayResponse;
-import com.midoujia.pay.model.alipay.AlipayTradePrecreateCusRequest;
-import com.midoujia.pay.model.alipay.AlipayTradePrecreateCusResponse;
-import com.midoujia.pay.model.alipay.AlipayTradeQueryCusRequest;
-import com.midoujia.pay.model.alipay.AlipayTradeQueryCusResponse;
+import com.midoujia.pay.model.alipay.MiDouAlipayTradeQueryRequest;
+import com.midoujia.pay.model.alipay.MiDouAlipayTradeQueryResponse;
 import com.midoujia.pay.service.AlipayServiceClient;
 
 /**
@@ -28,11 +23,11 @@ public class AlipayTradeQueryImpl extends AlipayServiceClient {
 
     @Override
     public <T extends PayResponse> T queryOrder(PayRequest<T> req) {
-        AlipayTradeQueryCusRequest alipayTradeQueryCusRequest = (AlipayTradeQueryCusRequest) req;
+        MiDouAlipayTradeQueryRequest miDouAlipayTradeQueryRequest = (MiDouAlipayTradeQueryRequest) req;
 
         AlipayTradeQueryRequest request = new AlipayTradeQueryRequest();
         JSONObject bizContent = new JSONObject();
-        bizContent.put("out_trade_no", alipayTradeQueryCusRequest.getOrderNo());
+        bizContent.put("out_trade_no", miDouAlipayTradeQueryRequest.getOrderNo());
         //bizContent.put("trade_no", "2014112611001004680073956707");
         request.setBizContent(bizContent.toString());
         try {
@@ -46,17 +41,17 @@ public class AlipayTradeQueryImpl extends AlipayServiceClient {
                 }
                 throw new PayException(BusinessMsg.Fail, response.getSubMsg());
             }
-            AlipayTradeQueryCusResponse alipayTradeQueryCusResponse = new AlipayTradeQueryCusResponse();
-            alipayTradeQueryCusResponse.setBody(response.getBody());
-            alipayTradeQueryCusResponse.setOrderNo(req.getOrderNo());
-            alipayTradeQueryCusResponse.setReqParam(bizContent.toString());
-            alipayTradeQueryCusResponse.setOrderAmount(Double.valueOf(response.getBuyerPayAmount()));
-            alipayTradeQueryCusResponse.setBuyerLoginId(response.getBuyerLogonId());
-            alipayTradeQueryCusResponse.setBuyerUserId(response.getBuyerUserId());
+            MiDouAlipayTradeQueryResponse miDouAlipayTradeQueryResponse = new MiDouAlipayTradeQueryResponse();
+            miDouAlipayTradeQueryResponse.setBody(response.getBody());
+            miDouAlipayTradeQueryResponse.setOrderNo(req.getOrderNo());
+            miDouAlipayTradeQueryResponse.setReqParam(bizContent.toString());
+            miDouAlipayTradeQueryResponse.setOrderAmount(Double.valueOf(response.getBuyerPayAmount()));
+            miDouAlipayTradeQueryResponse.setBuyerLoginId(response.getBuyerLogonId());
+            miDouAlipayTradeQueryResponse.setBuyerUserId(response.getBuyerUserId());
             // 设置交易状态
-            alipayTradeQueryCusResponse.setTradeStatus(AlipayTradeStatusEnum.findByName(response.getTradeStatus()));
-            alipayTradeQueryCusResponse.setPayType(alipayTradeQueryCusRequest.getPayTypeEnum());
-            return (T) alipayTradeQueryCusResponse;
+            miDouAlipayTradeQueryResponse.setTradeStatus(AlipayTradeStatusEnum.findByName(response.getTradeStatus()));
+            miDouAlipayTradeQueryResponse.setPayType(miDouAlipayTradeQueryRequest.getPayTypeEnum());
+            return (T) miDouAlipayTradeQueryResponse;
         } catch (AlipayApiException alipayApiException) {
             throw new PayException(BusinessMsg.Fail, alipayApiException.getMessage());
         }

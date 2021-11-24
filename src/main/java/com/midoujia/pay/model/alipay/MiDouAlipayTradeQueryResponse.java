@@ -8,7 +8,7 @@ import com.midoujia.pay.model.PayResponse;
  *
  * @author zfldiv@163.com
  */
-public class AlipayTradeQueryCusResponse extends PayResponse {
+public class MiDouAlipayTradeQueryResponse extends PayResponse {
 
     /** 交易状态 */
     private AlipayTradeStatusEnum tradeStatus;

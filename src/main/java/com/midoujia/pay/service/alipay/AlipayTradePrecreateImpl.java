@@ -2,23 +2,15 @@ package com.midoujia.pay.service.alipay;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
-import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.api.request.AlipayTradePrecreateRequest;
-import com.alipay.api.response.AlipayTradePagePayResponse;
 import com.alipay.api.response.AlipayTradePrecreateResponse;
-import com.midoujia.pay.constants.AliPayConstants;
-import com.midoujia.pay.enums.PayTypeEnum;
 import com.midoujia.pay.exception.BusinessMsg;
 import com.midoujia.pay.exception.PayException;
 import com.midoujia.pay.model.PayRequest;
 import com.midoujia.pay.model.PayResponse;
-import com.midoujia.pay.model.alipay.AlipayTradePagePayCusRequest;
-import com.midoujia.pay.model.alipay.AlipayTradePagePayCusResponse;
-import com.midoujia.pay.model.alipay.AlipayTradePrecreateCusRequest;
-import com.midoujia.pay.model.alipay.AlipayTradePrecreateCusResponse;
+import com.midoujia.pay.model.alipay.MiDouAlipayTradePrecreateRequest;
+import com.midoujia.pay.model.alipay.MiDouAlipayTradePrecreateResponse;
 import com.midoujia.pay.service.AlipayServiceClient;
-
-import java.math.BigDecimal;
 
 /**
  * alipay.trade.precreate(统一收单线下交易预创建)
@@ -30,15 +22,15 @@ public class AlipayTradePrecreateImpl extends AlipayServiceClient {
 
     @Override
     public <T extends PayResponse> T pay(PayRequest<T> req) {
-        AlipayTradePrecreateCusRequest alipayTradePrecreateCusRequest = (AlipayTradePrecreateCusRequest) req;
+        MiDouAlipayTradePrecreateRequest miDouAlipayTradePrecreateRequest = (MiDouAlipayTradePrecreateRequest) req;
 
 
         AlipayTradePrecreateRequest request = new AlipayTradePrecreateRequest();
         request.setNotifyUrl("");
         JSONObject bizContent = new JSONObject();
-        bizContent.put("out_trade_no", alipayTradePrecreateCusRequest.getOrderNo());
-        bizContent.put("total_amount", alipayTradePrecreateCusRequest.getOrderAmount());
-        bizContent.put("subject", alipayTradePrecreateCusRequest.getOrderName());
+        bizContent.put("out_trade_no", miDouAlipayTradePrecreateRequest.getOrderNo());
+        bizContent.put("total_amount", miDouAlipayTradePrecreateRequest.getOrderAmount());
+        bizContent.put("subject", miDouAlipayTradePrecreateRequest.getOrderName());
 
         //// 商品明细信息，按需传入
         //JSONArray goodsDetail = new JSONArray();
@@ -88,15 +80,15 @@ public class AlipayTradePrecreateImpl extends AlipayServiceClient {
             } else {
                 System.out.println("调用失败");
             }
-            AlipayTradePrecreateCusResponse alipayTradePrecreateCusResponse = new AlipayTradePrecreateCusResponse();
-            alipayTradePrecreateCusResponse.setBody(response.getBody());
-            alipayTradePrecreateCusResponse.setOrderNo(req.getOrderNo());
-            alipayTradePrecreateCusResponse.setOrderAmount(alipayTradePrecreateCusRequest.getOrderAmount());
-            alipayTradePrecreateCusResponse.setOrderName(alipayTradePrecreateCusRequest.getOrderName());
-            alipayTradePrecreateCusResponse.setQrCode(response.getQrCode());
-            alipayTradePrecreateCusResponse.setReqParam(bizContent.toString());
-            alipayTradePrecreateCusResponse.setPayType(alipayTradePrecreateCusRequest.getPayTypeEnum());
-            return (T) alipayTradePrecreateCusResponse;
+            MiDouAlipayTradePrecreateResponse miDouAlipayTradePrecreateResponse = new MiDouAlipayTradePrecreateResponse();
+            miDouAlipayTradePrecreateResponse.setBody(response.getBody());
+            miDouAlipayTradePrecreateResponse.setOrderNo(req.getOrderNo());
+            miDouAlipayTradePrecreateResponse.setOrderAmount(miDouAlipayTradePrecreateRequest.getOrderAmount());
+            miDouAlipayTradePrecreateResponse.setOrderName(miDouAlipayTradePrecreateRequest.getOrderName());
+            miDouAlipayTradePrecreateResponse.setQrCode(response.getQrCode());
+            miDouAlipayTradePrecreateResponse.setReqParam(bizContent.toString());
+            miDouAlipayTradePrecreateResponse.setPayType(miDouAlipayTradePrecreateRequest.getPayTypeEnum());
+            return (T) miDouAlipayTradePrecreateResponse;
         } catch (AlipayApiException alipayApiException) {
             throw new PayException(BusinessMsg.Fail, alipayApiException.getMessage());
         }
