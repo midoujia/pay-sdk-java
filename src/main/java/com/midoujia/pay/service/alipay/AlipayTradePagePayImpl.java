@@ -38,18 +38,17 @@ public class AlipayTradePagePayImpl extends AlipayServiceClient {
         try {
             AlipayTradePagePayResponse response = alipayClient.pageExecute(request);
             if(response.isSuccess()){
-                System.out.println("调用成功");
+                MiDouAlipayTradePagePayResponse miDouAlipayTradePagePayResponse = new MiDouAlipayTradePagePayResponse();
+                miDouAlipayTradePagePayResponse.setBody(response.getBody());
+                miDouAlipayTradePagePayResponse.setPayTypeEnum(miDouAlipayTradePagePayRequest.getPayTypeEnum());
+                miDouAlipayTradePagePayResponse.setPayTypeEnum(req.getPayTypeEnum());
+                miDouAlipayTradePagePayResponse.setReqParam(bizContent.toString());
+                miDouAlipayTradePagePayResponse.setOrderAmount(miDouAlipayTradePagePayRequest.getOrderAmount());
+                miDouAlipayTradePagePayResponse.setOrderNo(miDouAlipayTradePagePayRequest.getOrderNo());
+                return (T) miDouAlipayTradePagePayResponse;
             } else {
-                System.out.println("调用失败");
+                throw new PayException(BusinessMsg.Fail, response.getSubMsg());
             }
-            MiDouAlipayTradePagePayResponse miDouAlipayTradePagePayResponse = new MiDouAlipayTradePagePayResponse();
-            miDouAlipayTradePagePayResponse.setBody(response.getBody());
-            miDouAlipayTradePagePayResponse.setPayTypeEnum(miDouAlipayTradePagePayRequest.getPayTypeEnum());
-            miDouAlipayTradePagePayResponse.setPayTypeEnum(req.getPayTypeEnum());
-            miDouAlipayTradePagePayResponse.setReqParam(bizContent.toString());
-            miDouAlipayTradePagePayResponse.setOrderAmount(miDouAlipayTradePagePayRequest.getOrderAmount());
-            miDouAlipayTradePagePayResponse.setOrderNo(miDouAlipayTradePagePayRequest.getOrderNo());
-            return (T) miDouAlipayTradePagePayResponse;
         } catch (AlipayApiException alipayApiException) {
             throw new PayException(BusinessMsg.Fail);
         }

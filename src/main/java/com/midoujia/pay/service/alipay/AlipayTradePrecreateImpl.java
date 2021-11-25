@@ -76,19 +76,18 @@ public class AlipayTradePrecreateImpl extends AlipayServiceClient {
         try {
             AlipayTradePrecreateResponse response = alipayClient.execute(request);
             if(response.isSuccess()){
-                System.out.println("调用成功");
+                MiDouAlipayTradePrecreateResponse miDouAlipayTradePrecreateResponse = new MiDouAlipayTradePrecreateResponse();
+                miDouAlipayTradePrecreateResponse.setBody(response.getBody());
+                miDouAlipayTradePrecreateResponse.setOrderNo(req.getOrderNo());
+                miDouAlipayTradePrecreateResponse.setOrderAmount(miDouAlipayTradePrecreateRequest.getOrderAmount());
+                miDouAlipayTradePrecreateResponse.setOrderName(miDouAlipayTradePrecreateRequest.getOrderName());
+                miDouAlipayTradePrecreateResponse.setQrCode(response.getQrCode());
+                miDouAlipayTradePrecreateResponse.setReqParam(bizContent.toString());
+                miDouAlipayTradePrecreateResponse.setPayType(miDouAlipayTradePrecreateRequest.getPayTypeEnum());
+                return (T) miDouAlipayTradePrecreateResponse;
             } else {
-                System.out.println("调用失败");
+                throw new PayException(BusinessMsg.Fail, response.getSubMsg());
             }
-            MiDouAlipayTradePrecreateResponse miDouAlipayTradePrecreateResponse = new MiDouAlipayTradePrecreateResponse();
-            miDouAlipayTradePrecreateResponse.setBody(response.getBody());
-            miDouAlipayTradePrecreateResponse.setOrderNo(req.getOrderNo());
-            miDouAlipayTradePrecreateResponse.setOrderAmount(miDouAlipayTradePrecreateRequest.getOrderAmount());
-            miDouAlipayTradePrecreateResponse.setOrderName(miDouAlipayTradePrecreateRequest.getOrderName());
-            miDouAlipayTradePrecreateResponse.setQrCode(response.getQrCode());
-            miDouAlipayTradePrecreateResponse.setReqParam(bizContent.toString());
-            miDouAlipayTradePrecreateResponse.setPayType(miDouAlipayTradePrecreateRequest.getPayTypeEnum());
-            return (T) miDouAlipayTradePrecreateResponse;
         } catch (AlipayApiException alipayApiException) {
             throw new PayException(BusinessMsg.Fail, alipayApiException.getMessage());
         }
