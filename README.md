@@ -44,12 +44,12 @@ public class Demo01 {
         PayClient payClient = new DefaultPayClient(aliPayConfig);
         // PayClient payClient = new AlipayServiceClient(aliPayConfig);
 
-        AlipayTradePagePayCusRequest alipayTradePagePayCusRequest = new AlipayTradePagePayCusRequest();
-        alipayTradePagePayCusRequest.setPayTypeEnum(PayTypeEnum.ALIPAY_PC);
-        alipayTradePagePayCusRequest.setOrderAmount(0.01);
-        alipayTradePagePayCusRequest.setOrderName("测试商品名称");
-        alipayTradePagePayCusRequest.setOrderId("20210817010101004");// 订单号
-        AlipayTradePagePayCusResponse payResponse = payClient.pay(alipayTradePagePayCusRequest);
+        MiDouAlipayTradePagePayCusRequest miDouAlipayTradePagePayCusRequest = new MiDouAlipayTradePagePayCusRequest();
+        miDouAlipayTradePagePayCusRequest.setPayTypeEnum(PayTypeEnum.ALIPAY_PC);
+        miDouAlipayTradePagePayCusRequest.setOrderAmount(0.01);
+        miDouAlipayTradePagePayCusRequest.setOrderName("测试商品名称");
+        miDouAlipayTradePagePayCusRequest.setOrderId("20210817010101004");// 订单号
+        MiDouAlipayTradePagePayCusResponse payResponse = payClient.pay(miDouAlipayTradePagePayCusRequest);
         System.out.println(payResponse.getBody());
     }
 }
@@ -80,12 +80,12 @@ public class Demo02 {
     private PayClient payClient;
 
     public void pay() {
-        AlipayTradePagePayCusRequest alipayTradePagePayCusRequest = new AlipayTradePagePayCusRequest();
-        alipayTradePagePayCusRequest.setPayTypeEnum(PayTypeEnum.ALIPAY_PC);
-        alipayTradePagePayCusRequest.setOrderAmount(0.01);
-        alipayTradePagePayCusRequest.setOrderName("测试商品名称");
-        alipayTradePagePayCusRequest.setOrderId("20210817010101004");
-        AlipayTradePagePayCusResponse payResponse = payClient.pay(alipayTradePagePayCusRequest);
+        MiDouAlipayTradePagePayCusRequest miDouAlipayTradePagePayCusRequest = new MiDouAlipayTradePagePayCusRequest();
+        miDouAlipayTradePagePayCusRequest.setPayTypeEnum(PayTypeEnum.ALIPAY_PC);
+        miDouAlipayTradePagePayCusRequest.setOrderAmount(0.01);
+        miDouAlipayTradePagePayCusRequest.setOrderName("测试商品名称");
+        miDouAlipayTradePagePayCusRequest.setOrderId("20210817010101004");
+        MiDouAlipayTradePagePayCusResponse payResponse = payClient.pay(miDouAlipayTradePagePayCusRequest);
         System.out.println(payResponse);
     }
 }
